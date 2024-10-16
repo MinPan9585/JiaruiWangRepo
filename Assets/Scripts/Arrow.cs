@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Arrow : MonoBehaviour
 {
@@ -41,4 +42,12 @@ public class Arrow : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(TilemapCollider2D tilemap)
+    {
+        if (tilemap.gameObject.tag == "Ground")
+        {
+            Destroy(gameObject);
+            
+        }
+    }
 }
