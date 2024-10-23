@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251881304895631731}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  rotateSpeed: 0.9
+  rotateSpeed: 270
   deathvfx: {fileID: 1477231943528760380, guid: 246baf95095619d4ba09b4dc3838f1bf, type: 3}
   hitGroundVFX: {fileID: 8712299343958235724, guid: 11b44588ff44be9469d6d61701ccf38b, type: 3}
 --- !u!58 &740527005579460477
