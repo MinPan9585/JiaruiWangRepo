@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641e3ecea2f94564abd7a47a439a84a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   rotateSpeed: 0.9
   deathvfx: {fileID: 1477231943528760380, guid: 246baf95095619d4ba09b4dc3838f1bf, type: 3}
   hitGroundVFX: {fileID: 8712299343958235724, guid: 11b44588ff44be9469d6d61701ccf38b, type: 3}
