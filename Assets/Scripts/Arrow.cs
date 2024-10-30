@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public class Arrow : MonoBehaviour
 {
@@ -62,7 +64,22 @@ public class Arrow : MonoBehaviour
         {
             return;
         }
+
+        if (Input.GetMouseButton(0))
+        {
+            speed = 10;
+            rotateSpeed = 10;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            speed = 5;
+            rotateSpeed = 270;
+        }
+     
     }
+    
+     
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
