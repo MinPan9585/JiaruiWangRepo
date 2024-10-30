@@ -15,7 +15,13 @@ public class Arrow : MonoBehaviour
     public GameObject deathvfx;
     public GameObject hitGroundVFX;
     bool isFlying = true;
-    
+    GameObject arrowSpawner;
+
+    private void Awake()
+    {
+        arrowSpawner = GameObject.Find("ArrowSpawner");
+    }
+
     void Update()
     {
         if (isFlying)
@@ -77,16 +83,18 @@ public class Arrow : MonoBehaviour
         }
      
     }
-    
-     
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+            collision.GetComponent<Rigidbody2D>().AddForce(transform.up * 10, ForceMode2D.Impulse);
+            collision.transform.GetChild(1).GetComponent<Animator>().SetTrigger("Die");
+
+            Destroy(collision.transform.gameObject, 2);
             Instantiate(deathvfx, collision.transform.position, Quaternion.identity);
+
         }
         if (collision.gameObject.tag == "Ground")
         {
@@ -94,6 +102,7 @@ public class Arrow : MonoBehaviour
             Instantiate(hitGroundVFX, transform.position, transform.rotation);
             GameObject.Find("ArrowSpawner").GetComponent<ArrowSpawner>().hasArrow = false;
             Destroy(gameObject, 1f);
+            arrowSpawner.GetComponent<ArrowSpawner>().arrowExist = false;
         }
     }
 

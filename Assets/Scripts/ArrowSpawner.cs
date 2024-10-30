@@ -6,11 +6,16 @@ public class ArrowSpawner : MonoBehaviour
 {
     public GameObject arrow;
     public bool hasArrow = true;
+    public bool arrowExist = false;
+
+    Vector3 mousePosition;
+    Vector3 finalMousePos;
+    Vector3 finalDir;
 
     // Start is called before the first frame update
     void Start()
     {
-        SpawnArrow();
+        StartCoroutine(SpawnArrow());
     }
 
     private void Update()
@@ -19,14 +24,61 @@ public class ArrowSpawner : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SpawnArrow();
+                StartCoroutine(SpawnArrow());
                 hasArrow = true;
             }
         }
     }
 
-    public void SpawnArrow()
+    //public void SpawnArrow()
+    //{
+    //    // spawn ui to pick direction
+    //    Debug.Log("111");
+
+    //    mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    finalMousePos = new Vector3(mousePosition.x, mousePosition.y, 0);
+
+    //    Vector3 direction = finalMousePos - transform.position;
+
+    //    float angle = Mathf.Atan2(finalDir.y, finalDir.x) * Mathf.Rad2Deg - 90f;
+    //    Quaternion finalRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        Debug.Log("222");
+    //        Instantiate(arrow, transform.position, finalRotation);
+    //    }
+    //}
+
+    IEnumerator SpawnArrow()
     {
-        Instantiate(arrow, transform.position, Quaternion.identity);
+        transform.GetChild(0).gameObject.SetActive(true);
+
+        while (arrowExist == false)
+        {
+            // spawn ui to pick direction
+            Debug.Log("111");
+
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            finalMousePos = new Vector3(mousePosition.x, mousePosition.y, 0);
+
+            Vector3 direction = finalMousePos - transform.position;
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+            Quaternion finalRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+            transform.GetChild(0).rotation = finalRotation;
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("222");
+                Instantiate(arrow, transform.position, finalRotation);
+                transform.GetChild(0).gameObject.SetActive(false);
+                arrowExist = true;
+            }
+            yield return null;
+        }
+        
     }
 }
