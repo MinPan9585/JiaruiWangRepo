@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Ground
   - MovingPlatform
+  - Rope
+  - Arrow
+  - Lamp
   layers:
   - Default
   - TransparentFX

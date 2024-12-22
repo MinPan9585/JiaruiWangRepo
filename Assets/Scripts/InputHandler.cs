@@ -1,41 +1,78 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InputHandler : MonoBehaviour
 {
-    public int everytimePushNum;
-    public int pushNumCountIndex;
+    //public int everytimePushNum;
+    public int keyListIndex;
     public List<int> pushNumList;
     public List<INPUTTYPE> currentTimeInputList;
-    public int pushNumCount;
+    //public int pushNumCount;
     public int pushCount;//当次计数，用来判定玩家输入了几个
     public INPUTTYPE currentInputType;
-    public bool hasJudged;
+    bool hasJudged = false;
     //public bool canShowArrow;//输入条间隔显示
     public Queue<INPUTTYPE> inputQueue;
+
+    public Sprite[] arrowSprites;
+    Image[] arrowImages;
+    Transform[] arrowtrans;
+    public GameObject[] arrowGOs;
+    Transform canvasTran;
+    Color greenColor = new Color(0, 1, 0, 1);
+
+    Vector3 startPos;
+    Vector3 endPos;
+    Vector3 judgeCenterPos;
+    Transform signalTrans;
+    Text judgeText;
 
     private void Awake()
     {
         pushNumList = new List<int>() { 4,4 };
-        everytimePushNum = 4;
+        //everytimePushNum = 4;
         currentTimeInputList = new List<INPUTTYPE>();
-        pushCount = 1;
+        pushCount = 0;
         //canShowArrow = true;
+
+        
+        arrowImages = new Image[4];
+        arrowtrans = new Transform[4];
+        canvasTran = GameObject.Find("ReloadCanvas").transform;
+        for (int i = 0; i < 4; i++)
+        {
+            arrowtrans[i] = canvasTran.GetChild(0).GetChild(i);
+            arrowImages[i] = arrowtrans[i].GetComponent<Image>();
+            //arrowGOs[i] = arrowtrans[i].gameObject;
+        }
+
+        //arrowSprites = new Sprite[4];
+        //for(int i = 0; i < 4; i++)
+        //{
+        //    arrowSprites[i] = Resources.Load<Sprite>("Sprites/Arrows" + i.ToString());
+        //}
+
+        inputQueue = new Queue<INPUTTYPE>();
+        RandomInputType();
+        ShowInputKey();
     }
 
     public void ShowInputKey()
     {
-        if(pushNumCountIndex >= pushNumList.Count)
+        if(keyListIndex >= pushNumList.Count)
         {
-            Debug.Log("game over");
+            Debug.Log("finish reload");
             return;
         }
+
         currentTimeInputList.Clear();
-        for (int i = 0; i < everytimePushNum; i++)
+        for (int i = 0; i < 4; i++)
         {
             currentTimeInputList.Add(inputQueue.Dequeue());
         }
+
         int setUIIndex = 0;
         foreach(var item in currentTimeInputList)
         {
@@ -46,8 +83,15 @@ public class InputHandler : MonoBehaviour
 
     public void SetArrowSprite(int uiIndex, int arrowID)
     {
-
+        //Debug.Log(arrowID);
+        //Debug.Log(uiIndex);
+        arrowImages[uiIndex].sprite = arrowSprites[arrowID];
     }
+
+    //public void SetArrowColor(int uiIndex)
+    //{
+    //    arrowImages[uiIndex].color = new Color(0, 1, 0, 1); 
+    //}
 
     public void RandomInputType()
     {
@@ -74,12 +118,68 @@ public class InputHandler : MonoBehaviour
 
     public void Judge(INPUTTYPE inputType)
     {
-        if(inputType == INPUTTYPE.NONE)
+        if(inputType == INPUTTYPE.NONE || hasJudged)
         {
+            print("none");
             return;
         }
-        Debug.Log(inputType);
+
+        //Debug.Log(inputType);
+
+        if(inputType == INPUTTYPE.SPACE)
+        {
+            if(pushCount >= currentTimeInputList.Count)//all buttons are pushed and are corrent
+            {
+                //give score and reset everything
+                string judgeStr = "Correct!";
+                keyListIndex++;
+                ResetState();
+                
+            }
+            else // not correct or not finish all, miss
+            {
+                ResetState();
+                string judgeStr = "Miss!";
+            }
+            //hasJudged = true;
+        }
+        else
+        {
+            if(pushCount >= currentTimeInputList.Count)//all buttons are pushed and are corrent
+            {
+                print("already finished, don't push key, push space");
+                //hasJudged = true;
+                return;
+            }
+            currentInputType = currentTimeInputList[pushCount];
+
+            if(inputType == currentInputType)
+            {
+                print("correct");
+                //SetArrowColor(pushCount);
+                pushCount++;
+            }
+            else
+            {
+                string judgeStr = "Miss!";
+                pushCount = 0;
+                //reset everything
+                //game over
+                ResetState();
+                Debug.Log("wrong, redo reload");
+            }
+        }
     }
+
+    public void ResetState()
+    {
+        pushCount = 0;
+        hasJudged = false;
+        
+
+        ShowInputKey();
+    }
+
 
     public INPUTTYPE InputInfo()
     {
@@ -98,6 +198,9 @@ public class InputHandler : MonoBehaviour
             case KeyCode.D:
                 input = INPUTTYPE.RIGHT;
                 break;
+            case KeyCode.Space:
+                input = INPUTTYPE.SPACE;
+                break;
         }
         return input;
     }
@@ -109,5 +212,6 @@ public enum INPUTTYPE
     DOWN,
     LEFT,
     RIGHT,
-    NONE
+    NONE,
+    SPACE
 }
