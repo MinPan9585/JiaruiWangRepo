@@ -16,10 +16,12 @@ public class Arrow : MonoBehaviour
     public GameObject hitGroundVFX;
     bool isFlying = true;
     GameObject arrowSpawner;
-
+    GameController gc;
+    public GameObject reload;
     private void Awake()
     {
         arrowSpawner = GameObject.Find("ArrowSpawner");
+        gc = GameObject.Find("GameController").GetComponent<GameController>();
     }
 
     void Update()
@@ -105,6 +107,8 @@ public class Arrow : MonoBehaviour
             GameObject.Find("ArrowSpawner").GetComponent<ArrowSpawner>().hasArrow = false;
             Destroy(gameObject, 1f);
             arrowSpawner.GetComponent<ArrowSpawner>().arrowExist = false;
+            //gc.transform.GetChild(0).gameObject.SetActive(true);
+            Instantiate(reload, Vector3.zero, Quaternion.identity);
         }
     }
 

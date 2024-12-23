@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class InputHandler : MonoBehaviour
 {
+    GameController gc;
+
     //public int everytimePushNum;
     public int keyListIndex;
     public List<int> pushNumList;
@@ -31,6 +33,7 @@ public class InputHandler : MonoBehaviour
 
     private void Awake()
     {
+        gc = GameObject.Find("GameController").GetComponent<GameController>();
         pushNumList = new List<int>() { 4,4 };
         //everytimePushNum = 4;
         currentTimeInputList = new List<INPUTTYPE>();
@@ -64,6 +67,8 @@ public class InputHandler : MonoBehaviour
         if(keyListIndex >= pushNumList.Count)
         {
             Debug.Log("finish reload");
+            gc.finishReload = true;
+            this.transform.parent.gameObject.SetActive(false);
             return;
         }
 
@@ -176,7 +181,6 @@ public class InputHandler : MonoBehaviour
         pushCount = 0;
         hasJudged = false;
         
-
         ShowInputKey();
     }
 

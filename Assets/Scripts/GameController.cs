@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public int score = 0;
+    public bool isFinalRun = false;
+    public bool finishReload = false;
+
     void Update()
     {
         if(score >= 5)

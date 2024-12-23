@@ -10,6 +10,7 @@ TagManager:
   - Rope
   - Arrow
   - Lamp
+  - EscapeDoor
   layers:
   - Default
   - TransparentFX

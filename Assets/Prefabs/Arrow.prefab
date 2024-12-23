@@ -104,6 +104,7 @@ MonoBehaviour:
   rotateSpeed: 270
   deathvfx: {fileID: 1477231943528760380, guid: 246baf95095619d4ba09b4dc3838f1bf, type: 3}
   hitGroundVFX: {fileID: 8712299343958235724, guid: 11b44588ff44be9469d6d61701ccf38b, type: 3}
+  reload: {fileID: 649835163828135996, guid: ca25ef11d3c60644183d41379938ae1f, type: 3}
 --- !u!58 &740527005579460477
 CircleCollider2D:
   m_ObjectHideFlags: 0

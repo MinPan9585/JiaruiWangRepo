@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ArrowSpawner : MonoBehaviour
 {
+    GameController gc;
     public GameObject arrow;
     public bool hasArrow = true;
     public bool arrowExist = false;
@@ -16,14 +18,16 @@ public class ArrowSpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnArrow());
+        gc = GameObject.Find("GameController").GetComponent<GameController>();  
     }
 
     private void Update()
     {
         if (!hasArrow)
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) && gc.finishReload)
             {
+                gc.finishReload = false;
                 StartCoroutine(SpawnArrow());
                 hasArrow = true;
             }
