@@ -62,7 +62,7 @@ public class ArrowSpawner : MonoBehaviour
         while (arrowExist == false)
         {
             // spawn ui to pick direction
-            Debug.Log("111");
+            //Debug.Log("111");
 
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             finalMousePos = new Vector3(mousePosition.x, mousePosition.y, 0);
@@ -76,7 +76,7 @@ public class ArrowSpawner : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("222");
+                //Debug.Log("222");
                 Instantiate(arrow, transform.position, finalRotation);
                 transform.GetChild(0).gameObject.SetActive(false);
                 arrowExist = true;
