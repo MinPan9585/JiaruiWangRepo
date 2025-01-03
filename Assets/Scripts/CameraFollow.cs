@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraFollow : MonoBehaviour
 {
     float halfWindowWidth = 21.335f;
-    float halfWindowHeight = 12f; 
+    float halfWindowHeight = 12f;
+    int horizontalNumber;
+    int verticalNumber;
 
     // Update is called once per frame
     void Update()
@@ -14,18 +17,26 @@ public class CameraFollow : MonoBehaviour
 
         if (arrow != null)
         {
-            if (arrow.transform.position.x > halfWindowWidth)
+            for (int i = 0; i < 10; i++)
             {
-                transform.position = new Vector3(halfWindowWidth * 2 , transform.position.y, transform.position.z);
+                if (arrow.transform.position.x - 2 * i * halfWindowWidth < 0)
+                {
+                    horizontalNumber = i;
+                    break;
+                }
             }
-            else if (arrow.transform.position.x < -halfWindowWidth)
+            for (int j = 0; j < 10; j++)
             {
-                transform.position = new Vector3(-halfWindowWidth * 2, transform.position.y, transform.position.z);
+                if (arrow.transform.position.y - 2 * j * halfWindowHeight < 0)
+                {
+                    verticalNumber = j;
+                    break;
+                }
             }
-            else
-            {
-                transform.position = new Vector3(0, transform.position.y, transform.position.z);
-            }
+            transform.position = new Vector3(halfWindowWidth * (horizontalNumber * 2 - 1), 
+                halfWindowHeight * (verticalNumber * 2 - 1), transform.position.z);
         }
+
+        
     }
 }
