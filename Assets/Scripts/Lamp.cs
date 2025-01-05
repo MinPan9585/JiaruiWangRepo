@@ -6,12 +6,12 @@ public class Lamp : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<NormalEnemy>().isAlive)
+        if(collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<EnemyHealth>().isAlive)
         {
             collision.transform.GetChild(1).GetComponent<Animator>().SetTrigger("Die");
             collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             GameObject.Find("GameController").GetComponent<GameController>().score += 1;
-            collision.gameObject.GetComponent<NormalEnemy>().isAlive = false;
+            collision.gameObject.GetComponent<EnemyHealth>().isAlive = false;
             //Destroy(collision.gameObject);
         }
     }

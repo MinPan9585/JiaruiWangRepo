@@ -89,11 +89,11 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<NormalEnemyWalk>().isAlive)
+        if(collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<EnemyHealth>().isAlive)
         {
             collision.GetComponent<Rigidbody2D>().AddForce(transform.up * 10, ForceMode2D.Impulse);
             collision.transform.GetChild(1).GetComponent<Animator>().SetTrigger("Die");
-            collision.gameObject.GetComponent<NormalEnemyWalk>().isAlive = false;
+            collision.gameObject.GetComponent<EnemyHealth>().isAlive = false;
 
             Destroy(collision.transform.gameObject, 2);
             Instantiate(deathvfx, collision.transform.position, Quaternion.identity);
@@ -111,5 +111,7 @@ public class Arrow : MonoBehaviour
             Instantiate(reload, Vector3.zero, Quaternion.identity);
         }
     }
+
+    
 
 }

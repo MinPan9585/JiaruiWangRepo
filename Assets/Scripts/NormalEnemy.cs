@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NormalEnemy : MonoBehaviour
 {
-    public bool isAlive = true;
+    //public bool isAlive = true;
     public Transform escapeDoor;
     Rigidbody2D rb;
     public float runSpeed;
