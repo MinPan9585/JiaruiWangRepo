@@ -104,8 +104,9 @@ public class Arrow : MonoBehaviour
         {
             isFlying = false;
             Instantiate(hitGroundVFX, transform.position, transform.rotation);
+            //Instantiate(brokenArrow, transform,position, transform.rotation);
             GameObject.Find("ArrowSpawner").GetComponent<ArrowSpawner>().hasArrow = false;
-            Destroy(gameObject, 1f);
+            Destroy(gameObject);
             arrowSpawner.GetComponent<ArrowSpawner>().arrowExist = false;
             //gc.transform.GetChild(0).gameObject.SetActive(true);
             Instantiate(reload, Vector3.zero, Quaternion.identity);

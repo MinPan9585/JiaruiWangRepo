@@ -11,6 +11,8 @@ TagManager:
   - Arrow
   - Lamp
   - EscapeDoor
+  - Rain
+  - Umbrella
   layers:
   - Default
   - TransparentFX
