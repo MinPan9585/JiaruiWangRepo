@@ -95,9 +95,10 @@ public class Arrow : MonoBehaviour
             collision.transform.GetChild(1).GetComponent<Animator>().SetTrigger("Die");
             collision.gameObject.GetComponent<EnemyHealth>().isAlive = false;
 
-            Destroy(collision.transform.gameObject, 2);
+            Destroy(collision.transform.gameObject, 1);
             Instantiate(deathvfx, collision.transform.position, Quaternion.identity);
             GameObject.Find("GameController").GetComponent<GameController>().score += 1;
+            collision.GetComponent<Rigidbody2D>().isKinematic = false;
 
         }
         if (collision.gameObject.tag == "Ground")

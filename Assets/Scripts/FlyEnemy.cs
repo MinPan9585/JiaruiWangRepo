@@ -11,10 +11,11 @@ public class FlyEnemy : MonoBehaviour
     public GameObject Point2;
     private Transform currentPoint;
     public float WalkSpeed;
+    EnemyHealth health;
     
     private void Awake()
     {
-
+        health = GetComponent<EnemyHealth>();
         rb = GetComponent<Rigidbody2D>();
         anim = transform.GetChild(1).GetComponent<Animator>();
     }
@@ -28,10 +29,15 @@ public class FlyEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(health.isAlive == false)
+        {
+            return;
+        }
         Vector2 point = currentPoint.position - transform.position;
         if (currentPoint == Point2.transform)
         {
             rb.velocity = new Vector2(WalkSpeed, 0);
+            
         }
         else
         {
@@ -40,27 +46,29 @@ public class FlyEnemy : MonoBehaviour
 
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == Point2.transform)
         {
-            flip();
+            //Debug.Log("111111");
+            Flip();
             currentPoint = Point1.transform;
         }
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == Point1.transform)
         {
-            flip();
+            Flip();
             currentPoint = Point2.transform;
         }
 
-         void flip()
-        {
-            Vector3 LocalScale = transform.localScale;
-            LocalScale.x *= -1;
-            transform.localScale = LocalScale;
-        }
+        
+    }
+    private void Flip()
+    {
+        Vector3 LocalScale = transform.localScale;
+        LocalScale.x *= -1;
+        transform.localScale = LocalScale;
+    }
 
-         void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(Point1.transform.position, 0.5f);
-            Gizmos.DrawWireSphere(Point2.transform.position, 0.5f);
-            Gizmos.DrawLine(Point1.transform.position, Point2.transform.position);
-        }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(Point1.transform.position, 0.5f);
+        Gizmos.DrawWireSphere(Point2.transform.position, 0.5f);
+        Gizmos.DrawLine(Point1.transform.position, Point2.transform.position);
     }
 }
