@@ -15,6 +15,8 @@ public class UmbrellaEnemyWalk : MonoBehaviour
     private Transform currentPoint;
     public float WalkSpeed;
     //
+    public int index;
+    bool paused = false;
 
     private void Awake()
     {
@@ -35,6 +37,10 @@ public class UmbrellaEnemyWalk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (paused)
+        {
+            return;
+        }
         //new set
         Vector2 point = currentPoint.position - transform.position;
         if (currentPoint == Point2.transform)
@@ -48,25 +54,38 @@ public class UmbrellaEnemyWalk : MonoBehaviour
 
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == Point2.transform)
         {
+            paused = true;
+            anim.SetBool("isWalking", false);
             flip();
             currentPoint = Point1.transform;
+            StartCoroutine(PauseSeconds());
         }
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == Point1.transform)
         {
+            paused = true;
+            anim.SetBool("isWalking", false);
             flip();
             currentPoint = Point2.transform;
+            StartCoroutine(PauseSeconds());
         }
         //
 
 
 
         //Debug.Log(gc.isFinalRun);
-        if (gc.isFinalRun)
+        if (gc.isFinalRun[index])
         {
             //anim.SetBool("isRunning", true);
             FinalRun();
             //Debug.Log("111");
         }
+    }
+
+    IEnumerator PauseSeconds()
+    {
+        yield return new WaitForSeconds(2f);
+        paused = false;
+        anim.SetBool("isWalking", true);
     }
 
     public void FinalRun()

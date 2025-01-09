@@ -50,6 +50,24 @@ public class ExplosiveBarrel : MonoBehaviour
         {
             //Debug.Log(results[i].name);
             results[i].transform.GetChild(1).GetComponent<Animator>().SetTrigger("Die");
+            Destroy(results[i].gameObject, 1);
+        }
+    }
+
+    void GetOtherBarrelsInsidePolygon()
+    {
+        Collider2D[] results = new Collider2D[10];
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.useTriggers = true;
+
+        // Set the layer mask to filter specific layers
+        filter.SetLayerMask(LayerMask.GetMask("Barrel"));
+
+        int colliderCount = Physics2D.OverlapCollider(poly, filter, results);
+        for (int i = 0; i < colliderCount; i++)
+        {
+            //Debug.Log(results[i].name);
+            results[i].GetComponent<ExplosiveBarrel>().Explode();
         }
     }
 }

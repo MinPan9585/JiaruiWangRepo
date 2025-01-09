@@ -16,7 +16,7 @@ public class NormalEnemyWalk : MonoBehaviour
     private Transform currentPoint;
     public float WalkSpeed;
     //
-
+    public int index;
     private void Awake()
     {
 
@@ -62,7 +62,7 @@ public class NormalEnemyWalk : MonoBehaviour
 
 
         //Debug.Log(gc.isFinalRun);
-        if (gc.isFinalRun)
+        if (gc.isFinalRun[index])
         {
             //anim.SetBool("isRunning", true);
             FinalRun();

@@ -94,6 +94,11 @@ public class Arrow : MonoBehaviour
             collision.GetComponent<Rigidbody2D>().AddForce(transform.up * 10, ForceMode2D.Impulse);
             collision.transform.GetChild(1).GetComponent<Animator>().SetTrigger("Die");
             collision.gameObject.GetComponent<EnemyHealth>().isAlive = false;
+            if (collision.transform.GetChild(2) != null)
+            {
+                collision.transform.GetChild(2).gameObject.SetActive(false);
+            }
+            
 
             Destroy(collision.transform.gameObject, 1);
             Instantiate(deathvfx, collision.transform.position, Quaternion.identity);

@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class LightCollider : MonoBehaviour
 {
-    Animator anim;
+    //Animator anim;
+    public int index;
 
     private void Awake()
     {
-        anim = transform.parent.GetChild(1).GetComponent<Animator>();
+        //anim = transform.parent.GetChild(1).GetComponent<Animator>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Arrow")
         {
             // enemy start run
-            GameObject.Find("GameController").GetComponent<GameController>().isFinalRun = true;
-            anim.SetBool("isRunning", true);    
+            GameObject.Find("GameController").GetComponent<GameController>().isFinalRun[index] = true;
+            //anim.SetBool("isRunning", true);    
         }
     }
 }

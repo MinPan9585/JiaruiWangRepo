@@ -10,6 +10,8 @@ public class KnifeEnemy : MonoBehaviour
     public float runSpeed;
     GameController gc;
     Animator anim;
+    public int index;
+
     private void Awake()
     {
 
@@ -24,7 +26,7 @@ public class KnifeEnemy : MonoBehaviour
     void Update()
     {
         //Debug.Log(gc.isFinalRun);
-        if (gc.isFinalRun)
+        if (gc.isFinalRun[index])
         {
             //anim.SetBool("isRunning", true);
             FinalRun();

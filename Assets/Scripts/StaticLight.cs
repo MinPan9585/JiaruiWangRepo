@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class StaticLight : MonoBehaviour
 {
+    public int index;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Arrow")
         {
             // enemy start run
-            GameObject.Find("GameController").GetComponent<GameController>().isFinalRun = true;
+            GameObject.Find("GameController").GetComponent<GameController>().isFinalRun[index] = true;
         }
     }
 }
