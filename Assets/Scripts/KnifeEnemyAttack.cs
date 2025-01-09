@@ -12,7 +12,6 @@ public class KnifeEnemyAttack : MonoBehaviour
             print("111");
             this.transform.parent.GetChild(0).GetChild(1).GetComponent<Animator>().SetTrigger("Attack");
             // other.GetComponent<Rigidbody2D>().velocity = new Vector2(this.transform.parent.localScale.x * speed , 0);
-
         }
     }
 

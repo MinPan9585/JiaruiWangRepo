@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 84559311
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 5c217e58d79b6ad4aafcd8c6959f44ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -170,7 +170,7 @@ MonoBehaviour:
   snappingSettings: {x: 0.5, y: 0.5}
   gizmoDeselectedColor: {r: 0, g: 0, b: 0, a: 1}
   rb: {fileID: 5592400956719084228}
-  editing: 0
+  editing: 1
   pathType: 1
   behaviorType: 1
   moveSpeed: 5

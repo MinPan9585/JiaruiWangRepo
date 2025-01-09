@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 1208911014986952493}
   - component: {fileID: 878443130879949871}
   - component: {fileID: 3804164872636262840}
+  - component: {fileID: 5837544894156548795}
   m_Layer: 10
   m_Name: NormalEnemyWalk
   m_TagString: Enemy
@@ -399,9 +400,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1572ae8bc516925408e3a26ead0e06ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAlive: 1
   escapeDoor: {fileID: 0}
-  runSpeed: 0
+  runSpeed: 5
   Point1: {fileID: 1086608003316744195}
   Point2: {fileID: 2033577874881636689}
   WalkSpeed: 5
+--- !u!114 &5837544894156548795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8424381984058517098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3293dc3660924745ae275a0f54bfc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAlive: 1
