@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class LightEnemy : MonoBehaviour
@@ -18,9 +19,14 @@ public class LightEnemy : MonoBehaviour
         anim = transform.GetChild(1).GetComponent<Animator>();
     }
 
+
     void Start()
     {
         gc = GameObject.Find("GameController").GetComponent<GameController>();
+        void Start()
+        {
+            gc = GameObject.Find("GameController").GetComponent<GameController>();
+        }
     }
 
     // Update is called once per frame
@@ -34,6 +40,7 @@ public class LightEnemy : MonoBehaviour
             //Debug.Log("111");
         }
     }
+
 
     public void FinalRun()
     {

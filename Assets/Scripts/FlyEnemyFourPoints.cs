@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyEnemyFourPoints : MonoBehaviour
+public class FlyEnemyFourPoints1 : MonoBehaviour
 {
     Rigidbody2D rb;
     GameController gc;

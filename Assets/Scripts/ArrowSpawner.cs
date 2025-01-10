@@ -9,8 +9,9 @@ public class ArrowSpawner : MonoBehaviour
     public GameObject arrow;
     public bool hasArrow = true;
     public bool arrowExist = false;
+    Animator anim;
     //public Animator anim;
-    
+
     Vector3 mousePosition;
     Vector3 finalMousePos;
     Vector3 finalDir;
@@ -82,6 +83,7 @@ public class ArrowSpawner : MonoBehaviour
                 transform.GetChild(0).gameObject.SetActive(false);
                 arrowExist = true;
                 //anim.SetTrigger("Shot");
+                anim.SetBool("isshot", true);
             }
             yield return null;
         }

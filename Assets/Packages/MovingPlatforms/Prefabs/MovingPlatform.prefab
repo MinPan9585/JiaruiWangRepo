@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 515899241331069608}
   - component: {fileID: 5592400956719084228}
   - component: {fileID: 1378095894145782259}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: MovingPlatform
-  m_TagString: MovingPlatform
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.12, y: 13.95, z: 0.129968}
-  m_LocalScale: {x: 4.0825596, y: 0.24821213, z: 1}
+  m_LocalScale: {x: 0.01562888, y: 0.0055185584, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -165,7 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b7de2610c17b64da84904fa14d13aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
+  waypoints:
+  - {x: 340.5, y: 88, z: 0}
+  - {x: 305.5, y: 88, z: 0}
   handleRadius: 0.25
   snappingSettings: {x: 0.5, y: 0.5}
   gizmoDeselectedColor: {r: 0, g: 0, b: 0, a: 1}

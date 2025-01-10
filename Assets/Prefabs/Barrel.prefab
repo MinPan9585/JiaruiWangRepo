@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 664999429025135142}
   - component: {fileID: 4286563375992346497}
   - component: {fileID: 4050283587442315804}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExplosiveBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7130571608470685781}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,9 +218,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5288537408374056854}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.67, y: -4.81, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.0022366543, y: 0.005896189, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6299660458651282007}
@@ -237,7 +237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6299660458651282007}
   - component: {fileID: 5715610555257624791}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExplosionRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
