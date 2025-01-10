@@ -6,6 +6,7 @@ public class LightCollider : MonoBehaviour
 {
     //Animator anim;
     public int index;
+    public Animator[] anims;
 
     private void Awake()
     {
@@ -17,6 +18,10 @@ public class LightCollider : MonoBehaviour
         {
             // enemy start run
             GameObject.Find("GameController").GetComponent<GameController>().isFinalRun[index] = true;
+            foreach (var anim in anims)
+            {
+                anim.SetBool("isRunning", true);
+            }
             //anim.SetBool("isRunning", true);    
         }
     }

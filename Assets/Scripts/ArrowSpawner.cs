@@ -83,7 +83,7 @@ public class ArrowSpawner : MonoBehaviour
                 transform.GetChild(0).gameObject.SetActive(false);
                 arrowExist = true;
                 //anim.SetTrigger("Shot");
-                anim.SetBool("isshot", true);
+                //anim.SetBool("isShot", true);
             }
             yield return null;
         }
