@@ -7,7 +7,7 @@ public class Lamp : MonoBehaviour
     Animator anim;
     private void Awake()
     {
-        anim = transform.GetChild(1).GetComponent<Animator>();
+        anim = transform.GetComponent<Animator>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

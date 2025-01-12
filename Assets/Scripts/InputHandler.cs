@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class InputHandler : MonoBehaviour
 {
     GameController gc;
+    public Sprite[] reloadSprites;
+    public Image reloadImage;
+    //GameObject reloadPrefab;
 
     //public int everytimePushNum;
     public int keyListIndex;
@@ -13,6 +16,7 @@ public class InputHandler : MonoBehaviour
     public List<INPUTTYPE> currentTimeInputList;
     //public int pushNumCount;
     public int pushCount;//当次计数，用来判定玩家输入了几个
+    public int totalPushCount;//总计数，用来判定玩家是否输入完了
     public INPUTTYPE currentInputType;
     bool hasJudged = false;
     //public bool canShowArrow;//输入条间隔显示
@@ -22,7 +26,7 @@ public class InputHandler : MonoBehaviour
     Image[] arrowImages;
     Transform[] arrowtrans;
     public GameObject[] arrowGOs;
-    Transform canvasTran;
+    public Transform canvasTran;
     Color greenColor = new Color(0, 1, 0, 1);
 
     Vector3 startPos;
@@ -33,17 +37,18 @@ public class InputHandler : MonoBehaviour
 
     private void Awake()
     {
+        //reloadPrefab = Resources.Load<GameObject>("Prefabs/Reload");
         gc = GameObject.Find("GameController").GetComponent<GameController>();
         pushNumList = new List<int>() { 4,4 };
         //everytimePushNum = 4;
         currentTimeInputList = new List<INPUTTYPE>();
         pushCount = 0;
+        totalPushCount = 0;
         //canShowArrow = true;
 
-        
+
         arrowImages = new Image[4];
         arrowtrans = new Transform[4];
-        canvasTran = GameObject.Find("ReloadCanvas").transform;
         for (int i = 0; i < 4; i++)
         {
             arrowtrans[i] = canvasTran.GetChild(0).GetChild(i);
@@ -138,6 +143,7 @@ public class InputHandler : MonoBehaviour
                 //give score and reset everything
                 string judgeStr = "Correct!";
                 keyListIndex++;
+
                 ResetState();
                 
             }
@@ -161,17 +167,23 @@ public class InputHandler : MonoBehaviour
             if(inputType == currentInputType)
             {
                 print("correct");
+                reloadImage.sprite = reloadSprites[totalPushCount];
                 //SetArrowColor(pushCount);
+                totalPushCount++;
                 pushCount++;
             }
             else
             {
+                Debug.Log("Miss");
                 string judgeStr = "Miss!";
-                pushCount = 0;
+                //pushCount = 0;
+                //Instantiate(reloadPrefab);
+                gc.redoReload = true;
+                Destroy(this.transform.parent.gameObject);
                 //reset everything
                 //game over
-                ResetState();
-                Debug.Log("wrong, redo reload");
+                //ResetState();
+                //Debug.Log("wrong, redo reload");
             }
         }
     }
