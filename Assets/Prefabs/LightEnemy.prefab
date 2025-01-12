@@ -273,8 +273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   escapeDoor: {fileID: 0}
-  runSpeed: 10
-  index: 1
+  runSpeed: 8
+  index: 3
 --- !u!1 &6468170010021927882
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,8 +325,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0
-  m_Color: {r: 0.0039215502, g: 0.8509804, b: 0.7500451, a: 1}
-  m_Intensity: 2.6
+  m_Color: {r: 1, g: 0.5703677, b: 0, a: 1}
+  m_Intensity: 2.98
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -422,6 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 1
+  anims: []
 --- !u!1 &8271396586096943862
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2632536413589391659}
   - component: {fileID: 7413946358219418478}
   - component: {fileID: 8664470862408840170}
-  - component: {fileID: 3100409244344496274}
+  - component: {fileID: 4336542171874948608}
   m_Layer: 10
   m_Name: UmbrellaEnemy
   m_TagString: Enemy
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 1
---- !u!114 &3100409244344496274
+--- !u!114 &4336542171874948608
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,14 +132,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3258304550285763805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9114ea3909b79d448857cf12be938ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 060598b0acf97df49acbff3e161b3bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   escapeDoor: {fileID: 0}
   runSpeed: 5
-  Point1: {fileID: 0}
-  Point2: {fileID: 0}
-  WalkSpeed: 2
+  index: 0
 --- !u!1 &3355832178731070684
 GameObject:
   m_ObjectHideFlags: 0
