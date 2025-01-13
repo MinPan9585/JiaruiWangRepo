@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class InputHandler : MonoBehaviour
 {
+    public GameObject markImage;
     GameController gc;
     public Sprite[] reloadSprites;
     public Image reloadImage;
@@ -23,6 +24,7 @@ public class InputHandler : MonoBehaviour
     public Queue<INPUTTYPE> inputQueue;
 
     public Sprite[] arrowSprites;
+    public Sprite[] greenSprites;
     Image[] arrowImages;
     Transform[] arrowtrans;
     public GameObject[] arrowGOs;
@@ -48,6 +50,7 @@ public class InputHandler : MonoBehaviour
 
 
         arrowImages = new Image[4];
+
         arrowtrans = new Transform[4];
         for (int i = 0; i < 4; i++)
         {
@@ -103,6 +106,11 @@ public class InputHandler : MonoBehaviour
     //    arrowImages[uiIndex].color = new Color(0, 1, 0, 1); 
     //}
 
+    public void SwitchSpriteColor(int uiIndex, int arrowID)
+    {
+        arrowImages[uiIndex].sprite = greenSprites[arrowID];
+    }
+
     public void RandomInputType()
     {
         //int addNum = 6;
@@ -143,7 +151,7 @@ public class InputHandler : MonoBehaviour
                 //give score and reset everything
                 string judgeStr = "Correct!";
                 keyListIndex++;
-
+                markImage.SetActive(true);
                 ResetState();
                 
             }
@@ -169,6 +177,7 @@ public class InputHandler : MonoBehaviour
                 print("correct");
                 reloadImage.sprite = reloadSprites[totalPushCount];
                 //SetArrowColor(pushCount);
+                SwitchSpriteColor(pushCount, (int)currentInputType);
                 totalPushCount++;
                 pushCount++;
             }

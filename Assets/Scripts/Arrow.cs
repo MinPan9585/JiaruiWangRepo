@@ -7,6 +7,9 @@ using UnityEngine.UIElements;
 
 public class Arrow : MonoBehaviour
 {
+    public GameObject hitGroundSFX;
+    AudioSource audioS;
+    public AudioClip[] sfx;
     public float speed;
     Vector3 mousePosition;
     Vector3 finalMousePos;
@@ -21,6 +24,7 @@ public class Arrow : MonoBehaviour
     public CameraShake cs;
     private void Awake()
     {
+        audioS = GetComponent<AudioSource>();
         cs = GameObject.Find("CameraShake").GetComponent<CameraShake>();
         arrowSpawner = GameObject.Find("ArrowSpawner");
         gc = GameObject.Find("GameController").GetComponent<GameController>();
@@ -93,6 +97,7 @@ public class Arrow : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<EnemyHealth>().isAlive)
         {
+            audioS.PlayOneShot(sfx[1]);
             collision.GetComponent<Rigidbody2D>().AddForce(transform.up * 10, ForceMode2D.Impulse);
             collision.transform.GetChild(1).GetComponent<Animator>().SetTrigger("Die");
             collision.gameObject.GetComponent<EnemyHealth>().isAlive = false;
@@ -115,6 +120,7 @@ public class Arrow : MonoBehaviour
         }
         if (collision.gameObject.tag == "Ground")
         {
+            Instantiate(hitGroundSFX, transform.position, Quaternion.identity);
             isFlying = false;
             cs.Shake();
             Instantiate(hitGroundVFX, transform.position, transform.rotation);
