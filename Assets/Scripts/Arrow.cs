@@ -18,8 +18,10 @@ public class Arrow : MonoBehaviour
     GameObject arrowSpawner;
     GameController gc;
     public GameObject reload;
+    public CameraShake cs;
     private void Awake()
     {
+        cs = GameObject.Find("CameraShake").GetComponent<CameraShake>();
         arrowSpawner = GameObject.Find("ArrowSpawner");
         gc = GameObject.Find("GameController").GetComponent<GameController>();
     }
@@ -114,6 +116,7 @@ public class Arrow : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isFlying = false;
+            cs.Shake();
             Instantiate(hitGroundVFX, transform.position, transform.rotation);
             //Instantiate(brokenArrow, transform,position, transform.rotation);
             GameObject.Find("ArrowSpawner").GetComponent<ArrowSpawner>().hasArrow = false;
