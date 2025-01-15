@@ -10,6 +10,8 @@ public class ArrowSpawner : MonoBehaviour
     public bool hasArrow = true;
     public bool arrowExist = false;
     Animator anim;
+    AudioSource audioS;
+    public AudioClip[] sfx;
     //public Animator anim;
 
     Vector3 mousePosition;
@@ -17,10 +19,14 @@ public class ArrowSpawner : MonoBehaviour
     Vector3 finalDir;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        audioS = GetComponent<AudioSource>();
+    }
     void Start()
     {
         StartCoroutine(SpawnArrow());
-        gc = GameObject.Find("GameController").GetComponent<GameController>();  
+        gc = GameObject.Find("GameController").GetComponent<GameController>();
     }
 
     private void Update()
@@ -29,6 +35,7 @@ public class ArrowSpawner : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R) && gc.finishReload)
             {
+                audioS.PlayOneShot(sfx[1]);
                 gc.finishReload = false;
                 StartCoroutine(SpawnArrow());
                 hasArrow = true;
@@ -78,6 +85,7 @@ public class ArrowSpawner : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                audioS.PlayOneShot(sfx[0]);
                 //Debug.Log("222");
                 Instantiate(arrow, transform.position, finalRotation);
                 transform.GetChild(0).gameObject.SetActive(false);

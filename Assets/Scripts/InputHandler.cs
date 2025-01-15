@@ -37,6 +37,9 @@ public class InputHandler : MonoBehaviour
     Transform signalTrans;
     Text judgeText;
 
+    AudioSource audioS;
+    public AudioClip[] sfx;
+
     private void Awake()
     {
         //reloadPrefab = Resources.Load<GameObject>("Prefabs/Reload");
@@ -68,6 +71,8 @@ public class InputHandler : MonoBehaviour
         inputQueue = new Queue<INPUTTYPE>();
         RandomInputType();
         ShowInputKey();
+
+        audioS = GetComponent<AudioSource>();
     }
 
     public void ShowInputKey()
@@ -208,23 +213,29 @@ public class InputHandler : MonoBehaviour
 
     public INPUTTYPE InputInfo()
     {
+        
         INPUTTYPE input = INPUTTYPE.NONE;
         switch(Event.current.keyCode)
         {
             case KeyCode.W:
                 input = INPUTTYPE.UP;
+                audioS.PlayOneShot(sfx[0]);
                 break;
             case KeyCode.S:
                 input = INPUTTYPE.DOWN;
+                audioS.PlayOneShot(sfx[0]);
                 break;
             case KeyCode.A:
                 input = INPUTTYPE.LEFT;
+                audioS.PlayOneShot(sfx[0]);
                 break;
             case KeyCode.D:
                 input = INPUTTYPE.RIGHT;
+                audioS.PlayOneShot(sfx[0]);
                 break;
             case KeyCode.Space:
                 input = INPUTTYPE.SPACE;
+                audioS.PlayOneShot(sfx[1]);
                 break;
         }
         return input;

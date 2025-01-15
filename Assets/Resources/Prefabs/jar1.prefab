@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5563432580620783388}
   - component: {fileID: 6889868934547535633}
   - component: {fileID: 6856165949694696972}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: jar1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,3 +144,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyVFX: {fileID: 5908503066632524255, guid: fb051900858a0e0438c408c1e7d27a83, type: 3}
+  destroySFX: {fileID: 7867184105333723381, guid: ff0a326230ee70d44a273c920b10de2e, type: 3}

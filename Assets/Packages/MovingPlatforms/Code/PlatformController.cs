@@ -106,8 +106,8 @@ namespace Bundos.MovingPlatforms
         }
         private void OnDrawGizmos()
         {
-            if (IsSelected() && editing)
-                return;
+            //if (IsSelected() && editing)
+            //    return;
 
             if (pathType == WaypointPathType.Closed)
             {
@@ -136,10 +136,10 @@ namespace Bundos.MovingPlatforms
             }
         }
 
-        private bool IsSelected()
-        {
-            return UnityEditor.Selection.activeGameObject == transform.gameObject;
-        }
+        //private bool IsSelected()
+        //{
+        //    return UnityEditor.Selection.activeGameObject == transform.gameObject;
+        //}
 
         int mod(int x, int m)
         {

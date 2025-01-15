@@ -305,8 +305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   escapeDoor: {fileID: 0}
-  runSpeed: 6
-  index: 12
+  runSpeed: 8
+  index: 2
 --- !u!114 &1850853723693697056
 MonoBehaviour:
   m_ObjectHideFlags: 0

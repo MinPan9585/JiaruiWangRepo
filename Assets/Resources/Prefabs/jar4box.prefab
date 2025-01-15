@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3001802557374498184}
   - component: {fileID: 5455716139046754406}
   - component: {fileID: 5919428273728311726}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: jar4box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyVFX: {fileID: 5908503066632524255, guid: fb051900858a0e0438c408c1e7d27a83, type: 3}
+  destroySFX: {fileID: 7867184105333723381, guid: ff0a326230ee70d44a273c920b10de2e, type: 3}
 --- !u!61 &5919428273728311726
 BoxCollider2D:
   m_ObjectHideFlags: 0

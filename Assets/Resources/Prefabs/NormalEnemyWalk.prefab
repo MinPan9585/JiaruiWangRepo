@@ -401,10 +401,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   escapeDoor: {fileID: 0}
-  runSpeed: 5
+  runSpeed: 9
   Point1: {fileID: 1086608003316744195}
   Point2: {fileID: 2033577874881636689}
-  WalkSpeed: 5
+  WalkSpeed: 3
+  index: 2
 --- !u!114 &5837544894156548795
 MonoBehaviour:
   m_ObjectHideFlags: 0

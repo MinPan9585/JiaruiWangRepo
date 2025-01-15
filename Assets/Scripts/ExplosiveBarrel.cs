@@ -7,8 +7,15 @@ public class ExplosiveBarrel : MonoBehaviour
     private Rigidbody2D rb2d;
     private Animator anim;
     public PolygonCollider2D poly;
+    AudioSource audioS;
+    public AudioClip[] sfx;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        //anim = transform.parent.GetChild(1).GetComponent<Animator>();
+        audioS = GetComponent<AudioSource>();
+    }
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -27,6 +34,7 @@ public class ExplosiveBarrel : MonoBehaviour
 
     void Explode()
     {
+        audioS.PlayOneShot(sfx[0]);
         GetObjectsInsidePolygon();
         anim.SetTrigger("Explode");
     }

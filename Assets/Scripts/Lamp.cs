@@ -5,9 +5,14 @@ using UnityEngine;
 public class Lamp : MonoBehaviour
 {
     Animator anim;
+
+    AudioSource audioS;
+    public AudioClip[] sfx;
     private void Awake()
     {
+        audioS = GetComponent<AudioSource>();
         anim = transform.GetComponent<Animator>();
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -22,6 +27,7 @@ public class Lamp : MonoBehaviour
         }
         if (collision.gameObject.tag == "Ground")
         {
+            audioS.PlayOneShot(sfx[0]);
             anim.SetBool("isGrounded", true);
         }
     }
